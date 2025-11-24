@@ -1,7 +1,5 @@
 <x-layout>
 
-    <x-navbar/>
-
     <div class="container-fluid img-bg vh-100">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-12">

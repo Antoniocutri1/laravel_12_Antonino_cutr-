@@ -1,5 +1,4 @@
 <x-layout>
-    <x-navbar/>
 
     <div class="container-fluid vh-100">
         <div class="row d-flex justify-content-center align-items-center">
