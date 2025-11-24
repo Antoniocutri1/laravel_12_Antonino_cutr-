@@ -11,6 +11,15 @@
         <li class="nav-item">
           <a class="nav-link text-white fs-4" href="{{route('contact_us')}}">Contattaci</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fs-4" href="{{route('products')}}">Prodotti</a>
+        </li>
+        @if (request()->routeIs('products'))
+          <li class="nav-item">
+            <a class="nav-link text-white fs-4" href="{{route('product.form')}}">Inserisci prodotto</a>
+          </li>
+        @endif
+        
     </div>
   </div>
 </nav>
