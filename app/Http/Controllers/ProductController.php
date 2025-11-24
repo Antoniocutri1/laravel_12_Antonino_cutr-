@@ -35,6 +35,7 @@ class ProductController extends Controller
             'type' => $request->type,
             'price' => $request->price,
             'description' => $request->description,
+            'img' => $request->file('img')->store('public/images')
         ]);
 
         return redirect()->route('products')->with('status', 'Prodotto inserito con successo');
