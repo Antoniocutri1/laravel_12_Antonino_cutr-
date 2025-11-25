@@ -27,6 +27,12 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
             <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
+            <li>
+              <form action="{{route('logout')}}" method="POST">
+                @csrf 
+                <button class="dropdown-item" type="submit">Logout</button>
+              </form>
+            </li>
           </ul>
         </li>
         
