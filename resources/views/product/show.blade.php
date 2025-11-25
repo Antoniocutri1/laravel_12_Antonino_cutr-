@@ -1,5 +1,7 @@
 <x-layout>
 
+    <x-status/>
+
     <div class="container my-5">
         <div class="card shadow-lg mx-auto" style="max-width: 600px;">
             <img src="{{ asset($product->img) }}" class="card-img-top" alt="{{ $product->name }}">
@@ -9,7 +11,7 @@
                 
                 <p class="card-text">{{ $product->description }}</p>
 
-                <h4 class="text-primary mb-3">Prezzo: €{{ number_format($product->price, 2) }}</h4>
+                <h4 class="text-primary mb-3">Prezzo: € {{ number_format($product->price, 2) }}</h4>
 
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('products') }}" class="btn btn-outline-secondary rounded-pill">

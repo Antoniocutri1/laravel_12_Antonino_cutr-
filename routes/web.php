@@ -17,4 +17,5 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('prod
 Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware('auth');
 
 Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit')->middleware('auth');
+Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update')->middleware('auth');
 

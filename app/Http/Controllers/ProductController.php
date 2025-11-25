@@ -68,9 +68,20 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $data = $request->validated();
+
+        // carico una nuova immagine se c'e, altrimenti mantengo la precedente
+        if($request->hasFile('img')){
+            $data['img'] = $request->file('img')->store('images', 'public');
+        } else {
+            $data['img'] = $product->img;
+        }
+
+        $product->update($data);
+
+        return redirect()->route('product.show', $product)->with('status', 'Prodotto aggiornato con successo!');
     }
 
     /**
