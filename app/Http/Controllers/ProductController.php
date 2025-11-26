@@ -78,16 +78,21 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         if(Auth::id() == $product->user->id){
-            $data = $request->validated();
 
             // carico una nuova immagine se c'e, altrimenti mantengo la precedente
             if($request->hasFile('img')){
-                $data['img'] = $request->file('img')->store('images', 'public');
+                $img = $request->file('img')->store('images', 'public');
             } else {
-                $data['img'] = $product->img;
+                $img = $product->img;
             }
 
-            $product->update($data);
+            $product->update([
+                'name' => $request->name,
+                'type' => $request->type,
+                'price' => $request->price,
+                'description' => $request->description,
+                'img' => $img,
+            ]);
 
             return redirect()->route('product.show', $product)->with('status', 'Prodotto aggiornato con successo!');
         }else {

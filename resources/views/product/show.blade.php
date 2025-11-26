@@ -4,7 +4,7 @@
 
     <div class="container my-5">
         <div class="card shadow-lg mx-auto" style="max-width: 600px;">
-            <img src="{{ asset($product->img) }}" class="card-img-top" alt="{{ $product->name }}">
+            <img src="{{ Storage::url($product->img) }}" class="card-img-top" alt="{{ $product->name }}">
             <div class="card-body">
                 <h3 class="card-title">{{ $product->name }}</h3>
                 <h5 class="card-subtitle text-muted mb-3">{{ $product->type }}</h5>
