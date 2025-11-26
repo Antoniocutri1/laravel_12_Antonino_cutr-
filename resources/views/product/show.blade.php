@@ -11,6 +11,8 @@
                 
                 <p class="card-text">{{ $product->description }}</p>
 
+                <p class="card-text">Creato da {{ $product->user->name }}</p>
+
                 <h4 class="text-primary mb-3">Prezzo: € {{ number_format($product->price, 2) }}</h4>
 
                 <div class="d-flex justify-content-between">

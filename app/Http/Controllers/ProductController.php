@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -43,6 +44,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'description' => $request->description,
             'img' => $img,
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect()->route('products')->with('status', 'Prodotto inserito con successo');
@@ -62,7 +64,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product.edit', compact('product'));
+        if(Auth::id() == $product->user->id){
+            return view('product.edit', compact('product'));
+        }else{
+            return redirect()->route('dashboard')->with('message', 'Non puoi effettuare questa operazione');
+        }
+
     }
 
     /**
@@ -70,18 +77,24 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $data = $request->validated();
+        if(Auth::id() == $product->user->id){
+            $data = $request->validated();
 
-        // carico una nuova immagine se c'e, altrimenti mantengo la precedente
-        if($request->hasFile('img')){
-            $data['img'] = $request->file('img')->store('images', 'public');
-        } else {
-            $data['img'] = $product->img;
+            // carico una nuova immagine se c'e, altrimenti mantengo la precedente
+            if($request->hasFile('img')){
+                $data['img'] = $request->file('img')->store('images', 'public');
+            } else {
+                $data['img'] = $product->img;
+            }
+
+            $product->update($data);
+
+            return redirect()->route('product.show', $product)->with('status', 'Prodotto aggiornato con successo!');
+        }else {
+            return redirect()->route('dashboard')->with('message', 'Non puoi effettuare questa operazione');
         }
 
-        $product->update($data);
-
-        return redirect()->route('product.show', $product)->with('status', 'Prodotto aggiornato con successo!');
+        
     }
 
     /**
@@ -89,9 +102,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        if(Auth::id() == $product->user->id){
+            $product->delete();
 
-        return redirect()->route('products')
+            return redirect()->route('products')
                      ->with('status', 'Prodotto eliminato con successo!');
+        }else{
+            return redirect()->route('dashboard')->with('message', 'Non puoi effettuare questa operazione');
+        }   
     }
 }
