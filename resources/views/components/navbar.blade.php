@@ -11,16 +11,23 @@
         <li class="nav-item">
           <a class="nav-link text-white fs-4" href="{{route('contact_us')}}">Contattaci</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white fs-4" href="{{route('products')}}">Prodotti</a>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Servizi
+          </a>
+          <ul class="dropdown-menu">
+            
+              <li><a class="dropdown-item" href="{{route('products')}}">Prodotti</a></li>
+              @auth
+                <li><a class="dropdown-item" href="{{route('product.form')}}">Inserisci prodotto</a></li>
+              @endauth
+              <li><a class="dropdown-item" href="{{route('tag.create')}}">Inserisci tag</a></li>
+
+              
+            
+          </ul>
         </li>
-        @auth
-          
-            <li class="nav-item">
-              <a class="nav-link text-white fs-4" href="{{route('product.form')}}">Inserisci prodotto</a>
-            </li>
-          
-        @endauth
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

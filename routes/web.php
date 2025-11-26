@@ -22,5 +22,6 @@ Route::put('/product/{product}', [ProductController::class, 'update'])->name('pr
 
 Route::get('/user/profile',[PublicController::class, 'profile'])->name('profile')->middleware('auth');
 
-Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create')->middleware('auth');
+Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create');
+Route::post('tag/post',[TagController::class, 'store'])->name('tag.store');
 
