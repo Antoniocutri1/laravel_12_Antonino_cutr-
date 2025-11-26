@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('dashboard');
@@ -20,4 +21,6 @@ Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name(
 Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update')->middleware('auth');
 
 Route::get('/user/profile',[PublicController::class, 'profile'])->name('profile')->middleware('auth');
+
+Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create')->middleware('auth');
 

@@ -15,11 +15,11 @@
           <a class="nav-link text-white fs-4" href="{{route('products')}}">Prodotti</a>
         </li>
         @auth
-          @if (request()->routeIs('products'))
+          
             <li class="nav-item">
               <a class="nav-link text-white fs-4" href="{{route('product.form')}}">Inserisci prodotto</a>
             </li>
-          @endif
+          
         @endauth
 
         <li class="nav-item dropdown">
