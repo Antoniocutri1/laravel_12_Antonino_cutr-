@@ -33,6 +33,7 @@
             @endguest
 
             @auth
+              <li><a class="dropdown-item" href="{{route('profile')}}">Profilo</a></li>
               <li>
                 <form action="{{route('logout')}}" method="POST">
                   @csrf 
