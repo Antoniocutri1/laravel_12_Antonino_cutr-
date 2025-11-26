@@ -70,8 +70,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $tags = Tag::all();
+
         if(Auth::id() == $product->user->id){
-            return view('product.edit', compact('product'));
+            return view('product.edit', compact('product', 'tags'));
         }else{
             return redirect()->route('dashboard')->with('message', 'Non puoi effettuare questa operazione');
         }
@@ -83,6 +85,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+
         if(Auth::id() == $product->user->id){
 
             // carico una nuova immagine se c'e, altrimenti mantengo la precedente
@@ -99,6 +102,8 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'img' => $img,
             ]);
+            
+            $product->tags()->sync($request->tags);
 
             return redirect()->route('product.show', $product)->with('status', 'Prodotto aggiornato con successo!');
         }else {
