@@ -9,4 +9,12 @@ class Tag extends Model
     protected $fillable = [
         'name'
     ];
+
+    /**
+     * The tag that belong to the product.
+     */
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

@@ -22,4 +22,12 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * The product that belong to the tag.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

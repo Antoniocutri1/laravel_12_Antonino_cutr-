@@ -28,11 +28,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|string',
         ]);
 
-        Tag::create($validated);
+        Tag::create([
+            'name' => $request->name,
+        ]);
 
         return redirect()->route('dashboard')->with('success', 'hai creato il tag con successo');
     }
