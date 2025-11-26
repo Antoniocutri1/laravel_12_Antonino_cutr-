@@ -8,7 +8,7 @@
             @endif
             @if (session('success'))
                 <div class="alert alert-success">
-                    {{ session('message') }}
+                    {{ session('success') }}
                 </div>
             @endif
         <div class="row d-flex justify-content-center align-items-center vh-100">

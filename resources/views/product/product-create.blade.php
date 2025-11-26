@@ -34,6 +34,15 @@
                         <input type="file" class="form-control" id="img" name="img">
                     </div>
 
+                    <div class="mb-3">
+                        <select name="tags[]" multiple class="form-control">
+                            <option selected>Seleziona i tag</option>
+                            @foreach ($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="mt-4 text-center">
                         <button type="submit" class="btn btn-success">Inserisci il prodotto</button>
                     </div>
@@ -41,6 +50,6 @@
             </div>
         </div>
     </div>
-
+</div>
 
 </x-layout>

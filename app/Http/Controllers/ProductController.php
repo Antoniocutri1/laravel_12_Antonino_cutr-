@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.product-create');
+        $tags = Tag::all();
+        return view('product.product-create', compact('tags'));
     }
 
     /**
@@ -38,7 +40,7 @@ class ProductController extends Controller
             $img = $request->file('img')->store('images', 'public');
         }
 
-        Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'type' => $request->type,
             'price' => $request->price,
@@ -46,6 +48,8 @@ class ProductController extends Controller
             'img' => $img,
             'user_id' => Auth::user()->id,
         ]);
+
+        $product->tags()->attach($request->tags);
 
         return redirect()->route('products')->with('status', 'Prodotto inserito con successo');
 
