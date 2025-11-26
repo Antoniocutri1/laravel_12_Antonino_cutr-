@@ -49,7 +49,9 @@ class ProductController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        $product->tags()->attach($request->tags);
+        if ($request->filled('tags')) {
+            $product->tags()->attach($request->tags);
+        }
 
         return redirect()->route('products')->with('status', 'Prodotto inserito con successo');
 

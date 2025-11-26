@@ -8,6 +8,14 @@
         <h3 class="card-title">{{$product->name}}</h3>
         <h5 class="card-subtitle"> {{$product->type}}</h5>
         <p class="card-text my-3">Creato da {{ $product->user->name }}</p>
+
+        <div class="d-block">
+            @forelse ($product->tags as $tag)
+                <p class="badge text-bg-info">{{$tag->name}}</p>
+            @empty 
+            @endforelse
+        </div>
+
         <div class="d-flex justify-content-between mt-2">
             <a href="{{route('product.show', $product)}}" class="btn btn-primary">Vedi di più</a>
 

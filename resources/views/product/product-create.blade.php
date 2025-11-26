@@ -35,8 +35,8 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="tags[]" class="form-label">Seleziona i tag</label>
                         <select name="tags[]" multiple class="form-control">
-                            <option selected>Seleziona i tag</option>
                             @foreach ($tags as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach

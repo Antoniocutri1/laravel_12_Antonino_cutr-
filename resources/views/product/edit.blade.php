@@ -34,6 +34,15 @@
                         <input type="file" class="form-control" id="img" name="img">
                     </div>
 
+                    <select name="tags[]" multiple class="form-control">
+                        @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}"
+                                {{ $product->tags->contains($tag->id) ? 'selected' : '' }}>
+                                {{ $tag->name }}
+                            </option>
+                        @endforeach
+                    </select>
+
                     <div class="mt-4 text-center">
                         <button type="submit" class="btn btn-success">Modifica prodotto</button>
                     </div>

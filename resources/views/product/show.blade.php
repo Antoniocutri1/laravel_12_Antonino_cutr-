@@ -15,6 +15,13 @@
 
                 <h4 class="text-primary mb-3">Prezzo: € {{ number_format($product->price, 2) }}</h4>
 
+                <div class="d-block">
+                    @forelse ($product->tags as $tag)
+                        <p class="badge text-bg-info">{{$tag->name}}</p>
+                    @empty 
+                    @endforelse
+                </div>
+
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('products') }}" class="btn btn-outline-secondary rounded-pill">
                         <i class="bi bi-arrow-left"></i> Torna ai prodotti
