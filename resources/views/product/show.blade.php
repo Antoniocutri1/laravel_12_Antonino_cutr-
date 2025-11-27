@@ -17,7 +17,7 @@
 
                 <div class="d-block">
                     @forelse ($product->tags as $tag)
-                        <p class="badge text-bg-info">{{$tag->name}}</p>
+                        <a href="{{route('tag.show', $tag)}}" class="badge text-bg-info">{{$tag->name}}</a>
                     @empty 
                     @endforelse
                 </div>

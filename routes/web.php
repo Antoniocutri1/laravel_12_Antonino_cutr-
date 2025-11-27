@@ -24,4 +24,5 @@ Route::get('/user/profile',[PublicController::class, 'profile'])->name('profile'
 
 Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create');
 Route::post('tag/post',[TagController::class, 'store'])->name('tag.store');
+Route::get('/tag/{tag}', [TagController::class, 'show'])->name('tag.show');
 

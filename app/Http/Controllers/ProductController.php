@@ -103,6 +103,7 @@ class ProductController extends Controller
                 'img' => $img,
             ]);
             
+            //modifico i tag relativi al prodotto
             $product->tags()->sync($request->tags);
 
             return redirect()->route('product.show', $product)->with('status', 'Prodotto aggiornato con successo!');
