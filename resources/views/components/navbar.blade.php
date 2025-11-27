@@ -18,11 +18,11 @@
           </a>
           <ul class="dropdown-menu">
             
-              <li><a class="dropdown-item" href="{{route('products')}}">Prodotti</a></li>
+              <li><a class="dropdown-item" href="{{route('products')}}">Tutti i Prodotti</a></li>
               @auth
-                <li><a class="dropdown-item" href="{{route('product.form')}}">Inserisci prodotto</a></li>
+                <li><a class="dropdown-item" href="{{route('product.form')}}">Inserisci nuovo prodotto</a></li>
               @endauth
-              <li><a class="dropdown-item" href="{{route('tag.create')}}">Inserisci tag</a></li>
+              <li><a class="dropdown-item" href="{{route('tag.create')}}">Inserisci nuovo tag</a></li>
 
               
             
@@ -40,7 +40,7 @@
             @endguest
 
             @auth
-              <li><a class="dropdown-item" href="{{route('profile')}}">Profilo</a></li>
+              <li><a class="dropdown-item" href="{{route('profile')}}">I miei articoli</a></li>
               <li>
                 <form action="{{route('logout')}}" method="POST">
                   @csrf 
